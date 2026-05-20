@@ -1,0 +1,83 @@
+export const ROLES = [
+  'Desarrollador Full-Stack',
+  'Analista Programador',
+  'Ingeniero en Informática',
+  'Automatizador Industrial',
+]
+
+export const PROJECTS = [
+  {
+    id: 'dashboard-industrial',
+    category: 'Full-Stack · Industria',
+    title: 'Dashboard Industrial IoT',
+    description: 'Panel de monitoreo en tiempo real para plantas pesqueras. Sensores industriales, alertas automáticas, histórico de datos y visualización de gráficos con FastAPI + React + TypeScript. Inspirado en experiencia real en Intac Chile.',
+    stack: ['FastAPI', 'React', 'TypeScript', 'SQLite', 'Recharts', 'Python'],
+    links: { github: 'https://github.com/Noull999/dashboard-industrial', live: null },
+    private: false,
+    color: '#00b4d8',
+  },
+  {
+    id: 'jobpilot',
+    category: 'SaaS · IA · Backend',
+    title: 'JobPilot AI — Coach de Empleo',
+    description: 'Plataforma SaaS con IA para orientar búsqueda de empleo en Chile. Backend Flask con JWT, Claude API como coach conversacional, suscripciones Stripe y deploy Docker en Railway/Render.',
+    stack: ['Python', 'Flask', 'PostgreSQL', 'Claude API', 'Stripe', 'Docker', 'JWT'],
+    links: { github: 'https://github.com/Noull999/jobpilot', live: null },
+    private: false,
+    color: '#7c3aed',
+  },
+  {
+    id: 'saas-agendamiento',
+    category: 'SaaS · Full-Stack',
+    title: 'SaaS de Agendamiento',
+    description: 'Plataforma multi-tenant para negocios locales. Registro de negocio con slug público, gestión de servicios y horarios, reservas en tiempo real con JWT, panel de administración y API REST completa.',
+    stack: ['Node.js', 'JavaScript', 'React', 'JWT', 'MongoDB', 'REST API'],
+    links: { github: 'https://github.com/Noull999/saas-agendamiento', live: null },
+    private: false,
+    color: '#10b981',
+  },
+  {
+    id: 'music-downloader',
+    category: 'Automatización · Python',
+    title: 'Music Downloader — SoundCloud',
+    description: 'Descargador automatizado de música desde SoundCloud con sincronización automática, detección de duplicados y soporte multi-formato. CLI limpio con gestión de biblioteca local.',
+    stack: ['Python', 'SoundCloud API', 'CLI', 'Automatización'],
+    links: { github: 'https://github.com/Noull999/music-downloader', live: null },
+    private: false,
+    color: '#f59e0b',
+  },
+  {
+    id: 'portfolio',
+    category: 'Frontend · Diseño',
+    title: 'Portfolio v4 — Este sitio',
+    description: 'Portfolio personal con Next.js, TypeScript, GSAP, Lenis smooth scroll, cursor custom con RAF/lerp, video background con parallax y estética cristalina. Deployado en Vercel.',
+    stack: ['Next.js', 'TypeScript', 'GSAP', 'Lenis', 'Tailwind CSS v4'],
+    links: { github: 'https://github.com/Noull999/portfolio', live: 'https://portfolio-v4-rho-opal.vercel.app' },
+    private: false,
+    color: '#48cae4',
+  },
+  {
+    id: 'hvac',
+    category: 'Automatización Industrial',
+    title: 'Sistema HVAC Automatizado — Intac Chile',
+    description: 'Automatización de salas de climatización industriales con PLC Siemens S7. Control de temperatura, monitoreo en tiempo real y lógica de fallo implementada en TIA Portal. Proyecto autodidacta en planta real.',
+    stack: ['PLC Siemens S7', 'TIA Portal', 'Ladder Logic', 'SCADA'],
+    links: { github: null, live: null },
+    private: true,
+    color: '#ff1744',
+  },
+]
+
+export const SKILLS = [
+  { group: 'Backend', items: ['Python', 'Flask', 'Node.js', 'FastAPI', 'PostgreSQL', 'MongoDB', 'Docker'] },
+  { group: 'Frontend', items: ['React', 'JavaScript', 'TypeScript', 'Next.js', 'Tailwind CSS'] },
+  { group: 'IA & APIs', items: ['Claude API', 'Anthropic SDK', 'Stripe API', 'REST APIs', 'JWT', 'Prompt Engineering'] },
+  { group: 'Industrial', items: ['PLC Siemens S7', 'TIA Portal', 'Ladder Logic', 'SCADA', 'HMI'] },
+  { group: 'IT & Infra', items: ['Linux', 'Git', 'Docker', 'Redes TCP/IP', 'Soporte Hardware'] },
+]
+
+export const SOCIAL = {
+  github: 'https://github.com/Noull999',
+  linkedin: 'https://linkedin.com/in/jose-asencio-70804b269',
+  email: 'joseestebanasencio@gmail.com',
+}

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /mnt/c/Users/Lenovo/portfolio-v4/public)",
+      "Bash(cp \"/mnt/c/Users/Lenovo/portfolio-v4/Video fondo.mp4\" /mnt/c/Users/Lenovo/portfolio-v4/public/video-fondo.mp4)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(Get-Content *)",
+      "WebFetch(domain:21st.dev)"
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@400;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg: #070305;
+  --surface: #0e0509;
+  --card: #15060c;
+  --accent: #ff1744;
+  --accent2: #b71c1c;
+  --accent3: #ff6b6b;
+  --text: #f5f0f2;
+  --muted: #7a6470;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-h: rgba(255, 23, 68, 0.35);
+  --grad: linear-gradient(135deg, #ff1744 0%, #b71c1c 100%);
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
+  --glow: 0 0 28px rgba(255, 23, 68, 0.2);
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Colores prismáticos (inspirados en la cadena de cristal del video) */
+  --prism-1: #ff6b9d;
+  --prism-2: #c77dff;
+  --prism-3: #48cae4;
+  --prism-4: #06d6a0;
+  --prism-5: #ffd166;
+  --prism-grad: linear-gradient(135deg, #ff6b9d 0%, #c77dff 25%, #48cae4 50%, #06d6a0 75%, #ffd166 100%);
+}
+
+html {
+  scroll-behavior: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 23, 68, 0.3) var(--surface);
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--border-h); border-radius: 3px; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+* { box-sizing: border-box; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.gradient-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.prism-text {
+  background: var(--prism-grad);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: prismShift 6s ease infinite;
+}
+
+@keyframes prismShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+[data-magnetic] { cursor: pointer; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes scrollLine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes pulseSmall {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.7; }
+}
+
+/* Custom cursor: ocultar sistema solo en dispositivos con pointer fino (mouse) */
+@media (hover: hover) and (pointer: fine) {
+  body, a, button, [data-magnetic] { cursor: none !important; }
+}
+
+/* Restaurar cursor en móvil/touch */
+@media (hover: none) {
+  body { cursor: auto; }
+  a, button, [data-magnetic] { cursor: pointer; }
+}
