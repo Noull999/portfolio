@@ -4,13 +4,14 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { PROJECTS } from '@/lib/data'
+import NocturaPreview from '@/components/projects/NocturaPreview'
 
 gsap.registerPlugin(ScrollTrigger)
 
-function ProjectCard({ project, index }: { project: (typeof PROJECTS)[0]; index: number }) {
+function ProjectCard({ project, index }: { project: (typeof PROJECTS)[0] & { featured?: boolean }; index: number }) {
   return (
     <div
-      className="flex-shrink-0 w-[85vw] max-w-[520px] border rounded-sm p-8 flex flex-col gap-5 transition-all duration-300 group hover:-translate-y-1 relative overflow-hidden"
+      className="flex-shrink-0 w-[85vw] max-w-[560px] border rounded-sm p-8 pt-9 flex flex-col gap-5 transition-all duration-500 group hover:-translate-y-2 relative overflow-hidden"
       style={{
         background: 'var(--card)',
         borderColor: 'var(--border)',
@@ -18,8 +19,48 @@ function ProjectCard({ project, index }: { project: (typeof PROJECTS)[0]; index:
       }}
       data-magnetic
     >
-      {/* Index + badge privado */}
-      <div className="absolute top-6 right-8 flex items-center gap-2">
+      {/* Color stripe top */}
+      <div
+        className="absolute top-0 left-0 right-0 h-[3px] origin-left transition-transform duration-500 group-hover:scale-x-100"
+        style={{ background: `linear-gradient(90deg, ${project.color}, transparent)`, transform: 'scaleX(0.35)' }}
+      />
+
+      {/* Giant ghost numeral */}
+      <div
+        aria-hidden
+        className="absolute pointer-events-none select-none transition-opacity duration-500 opacity-40 group-hover:opacity-70"
+        style={{
+          top: '-2.5rem',
+          right: '-0.5rem',
+          fontFamily: 'var(--font-display)',
+          fontSize: '11rem',
+          lineHeight: 1,
+          color: 'transparent',
+          WebkitTextStroke: `1px ${project.color}22`,
+          letterSpacing: '-0.04em',
+        }}
+      >
+        {String(index + 1).padStart(2, '0')}
+      </div>
+
+      {/* Badges row */}
+      <div className="absolute top-5 right-7 flex items-center gap-2 z-10">
+        {project.featured && (
+          <span
+            className="text-xs rounded-sm px-2 py-0.5"
+            style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.58rem',
+              color: project.color,
+              background: `${project.color}14`,
+              border: `1px solid ${project.color}40`,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+            }}
+          >
+            ★ Destacado
+          </span>
+        )}
         {project.private && (
           <span
             className="text-xs border rounded-sm px-1.5 py-0.5"
@@ -28,27 +69,34 @@ function ProjectCard({ project, index }: { project: (typeof PROJECTS)[0]; index:
             NDA
           </span>
         )}
-        <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: 'var(--muted)' }}>
-          {String(index + 1).padStart(2, '0')}
-        </span>
       </div>
 
       {/* Glow on hover */}
       <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-        style={{ background: `radial-gradient(ellipse 60% 50% at 50% 0%, ${project.color}10, transparent 70%)` }}
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"
+        style={{ background: `radial-gradient(ellipse 70% 60% at 50% 0%, ${project.color}18, transparent 70%)` }}
       />
+
+      {/* Featured visual preview */}
+      {project.id === 'noctura' && (
+        <div className="relative">
+          <NocturaPreview color={project.color} />
+        </div>
+      )}
 
       {/* Category */}
       <div
-        style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: project.color, letterSpacing: '0.06em', textTransform: 'uppercase' }}
+        className="relative"
+        style={{ fontFamily: 'var(--font-mono)', fontSize: '0.7rem', color: project.color, letterSpacing: '0.08em', textTransform: 'uppercase' }}
       >
+        <span className="inline-block w-6 h-px align-middle mr-2" style={{ background: project.color }} />
         {project.category}
       </div>
 
       {/* Title */}
       <h3
-        style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.4rem, 3vw, 1.9rem)', lineHeight: 1.1, color: 'var(--text)' }}
+        className="relative"
+        style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.5rem, 3.2vw, 2.1rem)', lineHeight: 1.05, color: 'var(--text)', letterSpacing: '-0.015em' }}
       >
         {project.title}
       </h3>

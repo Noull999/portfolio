@@ -7,6 +7,17 @@ export const ROLES = [
 
 export const PROJECTS = [
   {
+    id: 'noctura',
+    category: 'Experiencia Web · 3D · Diseño',
+    title: 'Nóctura — Rito y Código',
+    description: 'Experiencia web inmersiva con estética ritual/oscura. Three.js + React Three Fiber + postprocessing para escenas 3D, GSAP y Framer Motion para coreografía de transiciones, Lenis para scroll cinemático y Howler para diseño sonoro. Next.js 16 + React 19.',
+    stack: ['Next.js 16', 'React 19', 'Three.js', 'R3F', 'GSAP', 'Framer Motion', 'Lenis', 'Howler', 'Tailwind v4'],
+    links: { github: 'https://github.com/Noull999/noctura', live: 'https://noctura-wheat.vercel.app' },
+    private: false,
+    color: '#c084fc',
+    featured: true,
+  },
+  {
     id: 'dashboard-industrial',
     category: 'Full-Stack · Industria',
     title: 'Dashboard Industrial IoT',

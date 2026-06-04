@@ -91,7 +91,7 @@ export default function About() {
         {/* Right — stats */}
         <div ref={statsRef} className="grid grid-cols-2 gap-6 pt-16">
           {[
-            { value: '4+', label: 'Años de experiencia' },
+            { value: '1', label: 'Año de experiencia' },
             { value: '10+', label: 'Proyectos completados' },
             { value: '2026', label: 'Ing. Informática en curso' },
             { value: '∞', label: 'Disponible para proyectos' },

@@ -86,8 +86,37 @@ export default function Hero() {
         className="relative flex flex-col justify-center"
         style={{ zIndex: 10 }}
       >
+        {/* Chapter mark */}
+        <div
+          className="absolute top-0 left-8 hidden md:flex items-center gap-3"
+          style={{ fontFamily: 'var(--font-mono)', fontSize: '0.68rem', color: 'var(--muted)', letterSpacing: '0.14em', textTransform: 'uppercase' }}
+        >
+          <span style={{ color: 'var(--accent)' }}>01</span>
+          <span className="w-8 h-px" style={{ background: 'var(--border)' }} />
+          Intro
+        </div>
+
         {/* Actual content */}
-        <div className="relative max-w-4xl" style={{ padding: '3rem 2rem' }}>
+        <div className="relative max-w-5xl" style={{ padding: '3rem 2rem' }}>
+          {/* Ghost numeral behind title */}
+          <div
+            aria-hidden
+            className="absolute pointer-events-none select-none hidden md:block"
+            style={{
+              top: '-2rem',
+              right: '-1rem',
+              fontFamily: 'var(--font-display)',
+              fontSize: 'clamp(10rem, 22vw, 22rem)',
+              lineHeight: 0.85,
+              color: 'transparent',
+              WebkitTextStroke: '1px rgba(255,255,255,0.045)',
+              letterSpacing: '-0.04em',
+              zIndex: -1,
+            }}
+          >
+            01
+          </div>
+
           {/* Tag */}
           <div
             ref={tagRef}
@@ -102,7 +131,7 @@ export default function Hero() {
             }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)] animate-pulse" />
-            Puerto Montt, Chile
+            Puerto Montt, Chile · 2026
           </div>
 
           {/* Name */}
@@ -111,13 +140,26 @@ export default function Hero() {
             className="select-none"
             style={{
               fontFamily: 'var(--font-display)',
-              fontSize: 'clamp(4.5rem, 12vw, 10rem)',
-              lineHeight: 0.9,
-              letterSpacing: '-0.02em',
+              fontSize: 'clamp(4.5rem, 13vw, 11rem)',
+              lineHeight: 0.86,
+              letterSpacing: '-0.035em',
             }}
           >
             <span className="block" style={{ color: 'var(--text)' }}>JOSÉ</span>
-            <span className="block gradient-text">Asencio</span>
+            <span className="flex items-baseline gap-4">
+              <span className="gradient-text">Asencio</span>
+              <span
+                aria-hidden
+                className="hidden md:inline-block"
+                style={{
+                  width: 'clamp(2rem, 6vw, 5rem)',
+                  height: '4px',
+                  background: 'var(--grad)',
+                  marginBottom: '0.4em',
+                  borderRadius: '2px',
+                }}
+              />
+            </span>
           </h1>
 
           {/* Typed role */}
