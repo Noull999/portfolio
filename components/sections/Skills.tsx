@@ -26,20 +26,36 @@ export default function Skills() {
     const grid = gridRef.current
     if (!section || !grid) return
 
-    gsap.from([labelRef.current, titleRef.current], {
-      scrollTrigger: { trigger: section, start: 'top 80%' },
-      y: 30, opacity: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out',
-    })
+    gsap.fromTo(
+      [labelRef.current, titleRef.current],
+      { y: 30, opacity: 0 },
+      {
+        scrollTrigger: { trigger: section, start: 'top 90%', once: true },
+        y: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: 'power3.out',
+      }
+    )
 
-    gsap.from(grid.querySelectorAll('.skill-group'), {
-      scrollTrigger: { trigger: section, start: 'top 75%' },
-      y: 60, opacity: 0, duration: 0.8, stagger: 0.12, ease: 'power3.out',
-    })
+    gsap.fromTo(
+      grid.querySelectorAll('.skill-group'),
+      { y: 40, opacity: 0 },
+      {
+        scrollTrigger: { trigger: section, start: 'top 90%', once: true },
+        y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+      }
+    )
 
-    gsap.from(grid.querySelectorAll('.skill-tag'), {
-      scrollTrigger: { trigger: section, start: 'top 70%' },
-      scale: 0.85, opacity: 0, duration: 0.45, stagger: 0.03, ease: 'back.out(1.7)',
-    })
+    gsap.fromTo(
+      grid.querySelectorAll('.skill-tag'),
+      { scale: 0.9, opacity: 0 },
+      {
+        scrollTrigger: { trigger: section, start: 'top 90%', once: true },
+        scale: 1, opacity: 1, duration: 0.4, stagger: 0.025, ease: 'back.out(1.5)',
+      }
+    )
+
+    // Refresh after pinned sections settle layout
+    const t = setTimeout(() => ScrollTrigger.refresh(), 300)
+    return () => clearTimeout(t)
   }, [])
 
   return (
