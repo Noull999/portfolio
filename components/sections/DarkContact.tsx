@@ -1,50 +1,36 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useRef, useEffect, useState } from 'react'
 import { ArrowUpRight, GitHub, LinkedIn, Mail } from '@/components/ui/icons'
 import { SOCIAL } from '@/lib/data'
-import LiquidChromeShader from '@/components/three/LiquidChromeShader'
 
 export default function DarkContact() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const [isVisible, setIsVisible] = useState(true)
-
-  useEffect(() => {
-    const el = sectionRef.current
-    if (!el) return
-    const ob = new IntersectionObserver(([e]) => setIsVisible(e.isIntersecting), { threshold: 0 })
-    ob.observe(el)
-    return () => ob.disconnect()
-  }, [])
-
   return (
     <section
       id="contact"
       className="dot-grid relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[var(--bg)] px-6 py-32 text-center"
-      ref={sectionRef}
     >
-      {/* Liquid Chrome shader background */}
-      <div className="pointer-events-none absolute inset-0 opacity-40" style={{ zIndex: 1 }}>
-        {isVisible && <LiquidChromeShader />}
-      </div>
-
+      {/* glow rojo tenue de fondo */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ background: 'radial-gradient(ellipse 50% 50% at 50% 60%, rgba(255,23,68,0.08), transparent 70%)' }}
+      />
       <span
         aria-hidden
         className="pointer-events-none absolute right-8 top-8 select-none leading-none text-white opacity-[0.022]"
-        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)', zIndex: 2 }}
+        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)' }}
       >
         004
       </span>
 
-      <div className="relative" style={{ zIndex: 3 }}>
-        <motion.p
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.7 }}
-          className="relative mb-8 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]"
-        >
+      <motion.p
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.7 }}
+        className="relative mb-8 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]"
+      >
         <span className="text-white/35">004</span>&nbsp;&nbsp;/&nbsp;&nbsp;Contacto
       </motion.p>
 
@@ -104,7 +90,6 @@ export default function DarkContact() {
           <Mail width={22} height={22} />
         </a>
       </motion.div>
-      </div>
     </section>
   )
 }

@@ -1,8 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useRef, useEffect, useState } from 'react'
-import LiquidChromeShader from '@/components/three/LiquidChromeShader'
 
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -12,6 +10,8 @@ const fade = (delay = 0) => ({
 })
 
 const ROLES = ['Full-Stack', 'Automatización Industrial', 'Soporte IT']
+
+// Líneas decorativas que se dibujan al entrar en viewport
 const LINE_WIDTHS = [72, 44, 88, 28]
 
 function DrawLines() {
@@ -39,32 +39,22 @@ function DrawLines() {
 }
 
 export default function DarkAbout() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const [isVisible, setIsVisible] = useState(true)
-
-  useEffect(() => {
-    const el = sectionRef.current
-    if (!el) return
-    const ob = new IntersectionObserver(([e]) => setIsVisible(e.isIntersecting), { threshold: 0 })
-    ob.observe(el)
-    return () => ob.disconnect()
-  }, [])
-
   return (
-    <section id="about" className="dot-grid relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24" ref={sectionRef}>
-      {/* Liquid Chrome shader background */}
-      <div className="pointer-events-none absolute inset-0 opacity-40" style={{ zIndex: 1 }}>
-        {isVisible && <LiquidChromeShader />}
-      </div>
-
+    <section id="about" className="dot-grid relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
+      {/* glow blanco tenue esquina superior derecha */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ background: 'radial-gradient(ellipse 45% 35% at 90% 10%, rgba(255,255,255,0.05), transparent 70%)' }}
+      />
       <span
         aria-hidden
         className="pointer-events-none absolute right-8 top-8 select-none leading-none text-white opacity-[0.022]"
-        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)', zIndex: 2 }}
+        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)' }}
       >
         001
       </span>
-      <div className="mx-auto max-w-6xl relative" style={{ zIndex: 3 }}>
+      <div className="mx-auto max-w-6xl">
         <motion.p
           {...fade(0)}
           className="mb-8 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]"
