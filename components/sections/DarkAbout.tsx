@@ -1,6 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import dynamic from 'next/dynamic'
+
+const RedChromeShader = dynamic(() => import('@/components/three/RedChromeShader'), { ssr: false })
 
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -40,21 +43,26 @@ function DrawLines() {
 
 export default function DarkAbout() {
   return (
-    <section id="about" className="dot-grid relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
+    <section id="about" className="dot-grid relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24 overflow-hidden">
+      {/* Red Chrome Shader Background */}
+      <div className="absolute inset-0 opacity-35 pointer-events-none" style={{ zIndex: 0 }}>
+        <RedChromeShader />
+      </div>
+
       {/* glow blanco tenue esquina superior derecha */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(ellipse 45% 35% at 90% 10%, rgba(255,255,255,0.05), transparent 70%)' }}
+        style={{ background: 'radial-gradient(ellipse 45% 35% at 90% 10%, rgba(255,255,255,0.05), transparent 70%)', zIndex: 1 }}
       />
       <span
         aria-hidden
         className="pointer-events-none absolute right-8 top-8 select-none leading-none text-white opacity-[0.022]"
-        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)' }}
+        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)', zIndex: 2 }}
       >
         001
       </span>
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl relative" style={{ zIndex: 3 }}>
         <motion.p
           {...fade(0)}
           className="mb-8 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]"

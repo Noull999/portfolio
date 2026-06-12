@@ -1,8 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import { PROJECTS } from '@/lib/data'
 import { ArrowUpRight, GitHub } from '@/components/ui/icons'
+
+const RedChromeShader = dynamic(() => import('@/components/three/RedChromeShader'), { ssr: false })
 
 function ProjectCard({ project, i }: { project: typeof PROJECTS[number]; i: number }) {
   return (
@@ -84,22 +87,27 @@ function ProjectCard({ project, i }: { project: typeof PROJECTS[number]; i: numb
 
 export default function DarkProjects() {
   return (
-    <section id="projects" className="relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
+    <section id="projects" className="relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24 overflow-hidden">
+      {/* Red Chrome Shader Background */}
+      <div className="absolute inset-0 opacity-35 pointer-events-none" style={{ zIndex: 0 }}>
+        <RedChromeShader />
+      </div>
+
       {/* glow rojo izquierda */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(ellipse 55% 40% at 0% 30%, rgba(255,23,68,0.06), transparent 60%)' }}
+        style={{ background: 'radial-gradient(ellipse 55% 40% at 0% 30%, rgba(255,23,68,0.06), transparent 60%)', zIndex: 1 }}
       />
       <span
         aria-hidden
         className="pointer-events-none absolute right-8 top-8 select-none leading-none text-white opacity-[0.022]"
-        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)' }}
+        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)', zIndex: 2 }}
       >
         002
       </span>
 
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl relative" style={{ zIndex: 3 }}>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
