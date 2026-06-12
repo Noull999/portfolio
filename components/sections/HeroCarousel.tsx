@@ -39,6 +39,13 @@ export default function HeroCarousel() {
     [isAnimating],
   )
 
+  // Auto-avance cada 3.5 s (se pausa cuando el hero sale de pantalla)
+  useEffect(() => {
+    if (!heroVisible) return
+    const id = setInterval(() => navigate('next'), 3500)
+    return () => clearInterval(id)
+  }, [heroVisible, navigate])
+
   // Navegación con teclado (flechas)
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
