@@ -67,7 +67,7 @@ export default function DarkSkills() {
 
         <DrawLines />
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {SKILLS.map((group, i) => (
             <motion.div
               key={group.group}
@@ -75,8 +75,7 @@ export default function DarkSkills() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.6, ease: 'easeOut', delay: (i % 3) * 0.1 }}
-              className="border-t pt-5"
-              style={{ borderColor: 'var(--border)' }}
+              className="glass-card rounded-xl p-6"
             >
               <h3
                 className="mb-4 uppercase text-white"
@@ -89,7 +88,7 @@ export default function DarkSkills() {
                   <span
                     key={item}
                     className="rounded border px-2.5 py-1 font-mono text-[11px] text-white/65"
-                    style={{ borderColor: 'var(--border)' }}
+                    style={{ borderColor: 'rgba(255,255,255,0.07)' }}
                   >
                     {item}
                   </span>
