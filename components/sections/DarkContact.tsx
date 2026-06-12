@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import VideoBackground from '@/components/ui/VideoBackground'
 import { ArrowUpRight, GitHub, LinkedIn, Mail } from '@/components/ui/icons'
 import { SOCIAL } from '@/lib/data'
 
@@ -9,9 +8,9 @@ export default function DarkContact() {
   return (
     <section
       id="contact"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[var(--bg)] px-6 py-32 text-center"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-32 text-center"
+      style={{ background: 'rgba(5,6,10,0.72)' }}
     >
-      <VideoBackground />
       {/* glow rojo tenue de fondo */}
       <div
         aria-hidden

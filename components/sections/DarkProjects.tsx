@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import VideoBackground from '@/components/ui/VideoBackground'
 import { PROJECTS } from '@/lib/data'
 import { ArrowUpRight, GitHub } from '@/components/ui/icons'
 
@@ -85,8 +84,7 @@ function ProjectCard({ project, i }: { project: typeof PROJECTS[number]; i: numb
 
 export default function DarkProjects() {
   return (
-    <section id="projects" className="relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
-      <VideoBackground />
+    <section id="projects" className="relative px-6 py-32 sm:px-10 lg:px-24" style={{ background: 'rgba(5,6,10,0.72)' }}>
       {/* glow rojo izquierda */}
       <div
         aria-hidden

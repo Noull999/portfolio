@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import { SKILLS } from '@/lib/data'
-import VideoBackground from '@/components/ui/VideoBackground'
 
 const LINE_WIDTHS = [55, 85, 38, 70]
 
@@ -32,8 +31,7 @@ function DrawLines() {
 
 export default function DarkSkills() {
   return (
-    <section id="skills" className="relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
-      <VideoBackground />
+    <section id="skills" className="relative px-6 py-32 sm:px-10 lg:px-24" style={{ background: 'rgba(5,6,10,0.72)' }}>
       {/* glow rojo tenue esquina inferior derecha */}
       <div
         aria-hidden

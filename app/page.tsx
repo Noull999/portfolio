@@ -5,10 +5,12 @@ import DarkSkills from '@/components/sections/DarkSkills'
 import DarkContact from '@/components/sections/DarkContact'
 import Marquee from '@/components/ui/Marquee'
 import Footer from '@/components/ui/Footer'
+import ScrollScrubVideo from '@/components/ui/ScrollScrubVideo'
 
 export default function Home() {
   return (
     <main>
+      <ScrollScrubVideo />
       <HeroCarousel />
       <Marquee />
       <DarkAbout />
