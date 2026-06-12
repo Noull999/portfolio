@@ -1,48 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,600;1,9..40,300&family=JetBrains+Mono:wght@400;700&display=swap');
 @import "tailwindcss";
 
-:root {
-  --bg: #070305;
-  --surface: #0e0509;
-  --card: #15060c;
-  --accent: #ff1744;
-  --accent2: #b71c1c;
-  --accent3: #ff6b6b;
-  --text: #f5f0f2;
-  --muted: #7a6470;
-  --border: rgba(255, 255, 255, 0.06);
-  --border-h: rgba(255, 23, 68, 0.35);
-  --grad: linear-gradient(135deg, #ff1744 0%, #b71c1c 100%);
-  --shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
-  --glow: 0 0 28px rgba(255, 23, 68, 0.2);
-  --font-display: 'Bebas Neue', sans-serif;
-  --font-body: 'DM Sans', sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+@theme {
+  --font-display: var(--font-anton);
+  --font-body: var(--font-inter);
+}
 
-  /* Colores prismáticos (inspirados en la cadena de cristal del video) */
-  --prism-1: #ff6b9d;
-  --prism-2: #c77dff;
-  --prism-3: #48cae4;
-  --prism-4: #06d6a0;
-  --prism-5: #ffd166;
-  --prism-grad: linear-gradient(135deg, #ff6b9d 0%, #c77dff 25%, #48cae4 50%, #06d6a0 75%, #ffd166 100%);
+:root {
+  --bg: #05060a;
+  --text: #f5f5f7;
+  --muted: #6e6e78;
+  --accent: #ff1744;
+  --border: rgba(255, 255, 255, 0.08);
 }
 
 html {
-  scroll-behavior: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 23, 68, 0.3) var(--surface);
+  scrollbar-color: rgba(255, 255, 255, 0.18) var(--bg);
 }
 
 ::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-track { background: var(--surface); }
-::-webkit-scrollbar-thumb { background: var(--border-h); border-radius: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.18); border-radius: 3px; }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-body);
-  font-size: 16px;
+  font-family: var(--font-inter), system-ui, sans-serif;
   line-height: 1.6;
   overflow-x: hidden;
 }
@@ -56,51 +39,42 @@ body {
   }
 }
 
-.gradient-text {
-  background: var(--grad);
+/* ── Titular metálico cromado (look Nóctura sin lo gótico) ── */
+.chrome-text {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #d8d8da 28%,
+    #8a8a8d 55%,
+    #f2f2f4 70%,
+    #5e5e61 100%
+  );
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-
-.prism-text {
-  background: var(--prism-grad);
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: prismShift 6s ease infinite;
+  color: transparent;
 }
 
-@keyframes prismShift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Texto fantasma gigante de fondo (outline tenue) */
+.ghost-text {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.06);
 }
 
-[data-magnetic] { cursor: pointer; }
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+/* ── Grano: overlay de ruido fractal sobre negro ── */
+.grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.4;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
 }
 
-@keyframes scrollLine {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
-@keyframes pulseSmall {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 0.7; }
-}
-
-/* Custom cursor: ocultar sistema solo en dispositivos con pointer fino (mouse) */
+/* Custom cursor: ocultar el del sistema solo en dispositivos con mouse */
 @media (hover: hover) and (pointer: fine) {
   body, a, button, [data-magnetic] { cursor: none !important; }
 }
-
-/* Restaurar cursor en móvil/touch */
 @media (hover: none) {
   body { cursor: auto; }
   a, button, [data-magnetic] { cursor: pointer; }

@@ -1,16 +1,9 @@
 export default function Footer() {
   return (
-    <footer
-      className="border-t text-center"
-      style={{
-        padding: '2rem 3rem',
-        borderColor: 'var(--border)',
-        fontFamily: 'var(--font-mono)',
-        fontSize: '0.68rem',
-        color: 'var(--muted)',
-      }}
-    >
-      © 2026 <span style={{ color: 'var(--text)' }}>José Asencio</span> · Diseñado y codificado con precisión · Puerto Montt, Chile
+    <footer className="border-t border-white/10 bg-black px-8 py-8 text-center md:px-16">
+      <p className="font-body text-xs font-light text-white/60">
+        © 2026 <span className="text-white">José Asencio</span> · Diseñado y codificado con precisión · Puerto Montt, Chile
+      </p>
     </footer>
   )
 }

@@ -1,8 +1,22 @@
 import type { Metadata } from 'next'
+import { Anton, Inter } from 'next/font/google'
 import './globals.css'
 import SmoothScroll from '@/effects/SmoothScroll'
 import Nav from '@/components/ui/Nav'
 import Cursor from '@/components/cursor/Cursor'
+
+const anton = Anton({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-anton',
+  display: 'swap',
+})
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: 'José Asencio — Dev & Tech',
@@ -18,7 +32,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className="h-full">
+    <html lang="es" className={`h-full ${anton.variable} ${inter.variable}`}>
       <body className="min-h-full overflow-x-hidden">
         <Cursor />
         <SmoothScroll>
