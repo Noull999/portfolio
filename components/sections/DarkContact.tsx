@@ -8,30 +8,29 @@ export default function DarkContact() {
   return (
     <section
       id="contact"
-      className="dot-grid relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-32 text-center"
+      className="dot-grid relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[var(--bg)] px-6 py-32 text-center"
     >
       {/* glow rojo tenue de fondo */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(ellipse 50% 50% at 50% 60%, rgba(255,23,68,0.08), transparent 70%)', zIndex: 1 }}
+        style={{ background: 'radial-gradient(ellipse 50% 50% at 50% 60%, rgba(255,23,68,0.08), transparent 70%)' }}
       />
       <span
         aria-hidden
         className="pointer-events-none absolute right-8 top-8 select-none leading-none text-white opacity-[0.022]"
-        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)', zIndex: 2 }}
+        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)' }}
       >
         004
       </span>
 
-      <div style={{ zIndex: 3, position: 'relative' }}>
-        <motion.p
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 0.7 }}
-          className="relative mb-8 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]"
-        >
+      <motion.p
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 0.7 }}
+        className="relative mb-8 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]"
+      >
         <span className="text-white/35">004</span>&nbsp;&nbsp;/&nbsp;&nbsp;Contacto
       </motion.p>
 
@@ -91,7 +90,6 @@ export default function DarkContact() {
           <Mail width={22} height={22} />
         </a>
       </motion.div>
-      </div>
     </section>
   )
 }

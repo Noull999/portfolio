@@ -82,35 +82,6 @@ body {
   to   { transform: translateX(-50%); }
 }
 
-/* ── Liquid Chrome rojo: fondo metálico fluido, CSS puro (cero WebGL) ── */
-.liquid-chrome {
-  background-color: #05060a;
-  background-image:
-    radial-gradient(60% 80% at 20% 30%, rgba(255, 23, 68, 0.20), transparent 60%),
-    radial-gradient(50% 60% at 80% 20%, rgba(200, 200, 215, 0.10), transparent 55%),
-    radial-gradient(70% 70% at 70% 80%, rgba(255, 23, 68, 0.16), transparent 60%),
-    radial-gradient(45% 55% at 30% 75%, rgba(150, 150, 165, 0.08), transparent 55%);
-  background-size: 200% 200%, 180% 180%, 220% 220%, 160% 160%;
-  filter: blur(40px) saturate(1.15);
-  animation: liquidShift 22s ease-in-out infinite alternate;
-}
-
-@keyframes liquidShift {
-  0% {
-    background-position: 0% 0%, 100% 0%, 100% 100%, 0% 100%;
-  }
-  50% {
-    background-position: 40% 60%, 60% 40%, 50% 50%, 60% 30%;
-  }
-  100% {
-    background-position: 100% 100%, 0% 100%, 0% 0%, 100% 0%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .liquid-chrome { animation: none; }
-}
-
 /* Glass card — dark frosted glass */
 .glass-card {
   background: rgba(255, 255, 255, 0.03);

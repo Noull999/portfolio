@@ -31,21 +31,21 @@ function DrawLines() {
 
 export default function DarkSkills() {
   return (
-    <section id="skills" className="dot-grid relative px-6 py-32 sm:px-10 lg:px-24 overflow-hidden">
+    <section id="skills" className="dot-grid relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
       {/* glow rojo tenue esquina inferior derecha */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(ellipse 50% 40% at 100% 100%, rgba(255,23,68,0.07), transparent 65%)', zIndex: 1 }}
+        style={{ background: 'radial-gradient(ellipse 50% 40% at 100% 100%, rgba(255,23,68,0.07), transparent 65%)' }}
       />
       <span
         aria-hidden
         className="pointer-events-none absolute right-8 top-8 select-none leading-none text-white opacity-[0.022]"
-        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)', zIndex: 2 }}
+        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)' }}
       >
         003
       </span>
-      <div className="mx-auto max-w-6xl relative" style={{ zIndex: 3 }}>
+      <div className="mx-auto max-w-6xl">
         <motion.p
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

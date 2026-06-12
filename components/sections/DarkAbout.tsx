@@ -40,21 +40,21 @@ function DrawLines() {
 
 export default function DarkAbout() {
   return (
-    <section id="about" className="dot-grid relative px-6 py-32 sm:px-10 lg:px-24 overflow-hidden">
+    <section id="about" className="dot-grid relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
       {/* glow blanco tenue esquina superior derecha */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(ellipse 45% 35% at 90% 10%, rgba(255,255,255,0.05), transparent 70%)', zIndex: 1 }}
+        style={{ background: 'radial-gradient(ellipse 45% 35% at 90% 10%, rgba(255,255,255,0.05), transparent 70%)' }}
       />
       <span
         aria-hidden
         className="pointer-events-none absolute right-8 top-8 select-none leading-none text-white opacity-[0.022]"
-        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)', zIndex: 2 }}
+        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)' }}
       >
         001
       </span>
-      <div className="mx-auto max-w-6xl relative" style={{ zIndex: 3 }}>
+      <div className="mx-auto max-w-6xl">
         <motion.p
           {...fade(0)}
           className="mb-8 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]"
