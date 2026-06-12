@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import VideoBackground from '@/components/ui/VideoBackground'
 
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -40,7 +41,8 @@ function DrawLines() {
 
 export default function DarkAbout() {
   return (
-    <section id="about" className="dot-grid relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
+    <section id="about" className="relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
+      <VideoBackground triggerSelector="#about" />
       {/* glow blanco tenue esquina superior derecha */}
       <div
         aria-hidden

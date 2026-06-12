@@ -85,7 +85,7 @@ export default function VideoBackground({ triggerSelector, intensity = 0.25 }: P
       {/* Video */}
       <video
         ref={videoRef}
-        src="/video-fondo.mp4"
+        src="/videos/bg-nature.mp4"
         autoPlay
         muted
         loop
