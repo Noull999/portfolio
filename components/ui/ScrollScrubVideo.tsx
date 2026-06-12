@@ -17,20 +17,21 @@ export default function ScrollScrubVideo() {
       const end   = document.getElementById('contact')
       if (!start || !end || !duration) return null
 
-      const startTop   = start.getBoundingClientRect().top + window.scrollY
-      const endBottom  = end.getBoundingClientRect().bottom + window.scrollY
+      const startTop    = start.getBoundingClientRect().top + window.scrollY
+      const endBottom   = end.getBoundingClientRect().bottom + window.scrollY
       const totalScroll = endBottom - startTop - window.innerHeight
-      const scrolled   = window.scrollY - startTop
+      const scrolled    = window.scrollY - startTop
 
-      return Math.max(0, Math.min(1, scrolled / totalScroll))
+      // 2× velocidad: el video completa su recorrido en la mitad del scroll
+      const raw = scrolled / totalScroll
+      return Math.max(0, Math.min(1, raw * 2))
     }
 
     const scrub = () => {
       const p = getProgress()
       if (p !== null) {
         const target = p * duration
-        // solo seek si la diferencia es perceptible (evita microjumps)
-        if (Math.abs(video.currentTime - target) > 0.05) {
+        if (Math.abs(video.currentTime - target) > 0.03) {
           video.currentTime = target
         }
       }
