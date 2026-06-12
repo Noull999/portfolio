@@ -13,7 +13,7 @@ function detectWebGL() {
   return !!(c.getContext('webgl') || c.getContext('experimental-webgl'))
 }
 
-export default function CarouselCanvas({ activeIndex }: { activeIndex: number }) {
+export default function CarouselCanvas({ activeIndex, visible }: { activeIndex: number; visible: boolean }) {
   const [ready] = useState(detectWebGL)
   const [isMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 640)
 
@@ -23,6 +23,7 @@ export default function CarouselCanvas({ activeIndex }: { activeIndex: number })
     <Canvas
       className="!absolute inset-0"
       camera={{ position: [0, 0, 7], fov: 55 }}
+      frameloop={visible ? 'always' : 'demand'}
       gl={{
         antialias: true,
         alpha: true,

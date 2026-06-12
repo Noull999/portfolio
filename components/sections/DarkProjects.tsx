@@ -7,6 +7,19 @@ import { ArrowUpRight, GitHub } from '@/components/ui/icons'
 export default function DarkProjects() {
   return (
     <section id="projects" className="relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
+      {/* glow rojo izquierda, ghost numeral de sección */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ background: 'radial-gradient(ellipse 55% 40% at 0% 30%, rgba(255,23,68,0.06), transparent 60%)' }}
+      />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute right-8 top-8 select-none font-mono text-[clamp(6rem,18vw,16rem)] font-bold leading-none text-white opacity-[0.022]"
+        style={{ fontFamily: 'var(--font-anton), sans-serif' }}
+      >
+        002
+      </span>
       <div className="mx-auto max-w-6xl">
         <motion.p
           initial={{ opacity: 0, y: 24 }}

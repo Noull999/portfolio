@@ -71,6 +71,12 @@ body {
   background-size: 200px 200px;
 }
 
+/* Dot-grid de fondo: CSS puro, cero costo GPU */
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
 /* Custom cursor: ocultar el del sistema solo en dispositivos con mouse */
 @media (hover: hover) and (pointer: fine) {
   body, a, button, [data-magnetic] { cursor: none !important; }

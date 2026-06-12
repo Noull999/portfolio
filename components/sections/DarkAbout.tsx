@@ -13,7 +13,13 @@ const ROLES = ['Full-Stack', 'Automatización Industrial', 'Soporte IT']
 
 export default function DarkAbout() {
   return (
-    <section id="about" className="relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
+    <section id="about" className="dot-grid relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
+      {/* glow blanco tenue esquina superior derecha */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ background: 'radial-gradient(ellipse 45% 35% at 90% 10%, rgba(255,255,255,0.05), transparent 70%)' }}
+      />
       <div className="mx-auto max-w-6xl">
         <motion.p
           {...fade(0)}

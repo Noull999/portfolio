@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import dynamic from 'next/dynamic'
 import { ArrowLeft, ArrowRight } from '@/components/ui/icons'
 
@@ -16,6 +16,16 @@ function scrollToContent() {
 export default function HeroCarousel() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
+  const [heroVisible, setHeroVisible] = useState(true)
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const ob = new IntersectionObserver(([e]) => setHeroVisible(e.isIntersecting), { threshold: 0 })
+    ob.observe(el)
+    return () => ob.disconnect()
+  }, [])
 
   const navigate = useCallback(
     (dir: 'next' | 'prev') => {
@@ -42,6 +52,7 @@ export default function HeroCarousel() {
   return (
     <section
       id="hero"
+      ref={sectionRef}
       className="relative w-full overflow-hidden bg-[var(--bg)]"
       style={{ height: '100vh', fontFamily: 'var(--font-inter), sans-serif' }}
     >
@@ -66,7 +77,7 @@ export default function HeroCarousel() {
 
       {/* Canvas 3D (esculturas) */}
       <div className="absolute inset-0" style={{ zIndex: 3 }}>
-        <CarouselCanvas activeIndex={activeIndex} />
+        <CarouselCanvas activeIndex={activeIndex} visible={heroVisible} />
       </div>
 
       {/* Scrim superior (legibilidad de brand/nav) */}

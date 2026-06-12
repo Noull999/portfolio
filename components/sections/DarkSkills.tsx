@@ -5,7 +5,13 @@ import { SKILLS } from '@/lib/data'
 
 export default function DarkSkills() {
   return (
-    <section id="skills" className="relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
+    <section id="skills" className="dot-grid relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
+      {/* glow rojo tenue esquina inferior derecha */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ background: 'radial-gradient(ellipse 50% 40% at 100% 100%, rgba(255,23,68,0.07), transparent 65%)' }}
+      />
       <div className="mx-auto max-w-6xl">
         <motion.p
           initial={{ opacity: 0, y: 24 }}
