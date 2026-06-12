@@ -16,6 +16,13 @@ export default function DarkContact() {
         className="pointer-events-none absolute inset-0"
         style={{ background: 'radial-gradient(ellipse 50% 50% at 50% 60%, rgba(255,23,68,0.08), transparent 70%)' }}
       />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute right-8 top-8 select-none leading-none text-white opacity-[0.022]"
+        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)' }}
+      >
+        004
+      </span>
 
       <motion.p
         initial={{ opacity: 0, y: 24 }}

@@ -47,6 +47,13 @@ export default function DarkAbout() {
         className="pointer-events-none absolute inset-0"
         style={{ background: 'radial-gradient(ellipse 45% 35% at 90% 10%, rgba(255,255,255,0.05), transparent 70%)' }}
       />
+      <span
+        aria-hidden
+        className="pointer-events-none absolute right-8 top-8 select-none leading-none text-white opacity-[0.022]"
+        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)' }}
+      >
+        001
+      </span>
       <div className="mx-auto max-w-6xl">
         <motion.p
           {...fade(0)}
