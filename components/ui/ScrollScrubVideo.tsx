@@ -22,16 +22,19 @@ export default function ScrollScrubVideo() {
       const totalScroll = endBottom - startTop - window.innerHeight
       const scrolled    = window.scrollY - startTop
 
-      // 2× velocidad: el video completa su recorrido en la mitad del scroll
-      const raw = scrolled / totalScroll
-      return Math.max(0, Math.min(1, raw * 2))
+      const raw = Math.max(0, Math.min(1, scrolled / totalScroll))
+
+      // Ping-pong 2×: avanza en la primera mitad del scroll, retrocede en la segunda.
+      // El video siempre se mueve (no se congela) y la velocidad efectiva se duplica.
+      const cycle = (raw * 2) % 2
+      return cycle < 1 ? cycle : 2 - cycle
     }
 
     const scrub = () => {
       const p = getProgress()
       if (p !== null) {
         const target = p * duration
-        if (Math.abs(video.currentTime - target) > 0.03) {
+        if (Math.abs(video.currentTime - target) > 0.02) {
           video.currentTime = target
         }
       }
