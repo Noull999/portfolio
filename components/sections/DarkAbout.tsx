@@ -1,9 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import dynamic from 'next/dynamic'
-
-const RedChromeShader = dynamic(() => import('@/components/three/RedChromeShader'), { ssr: false })
 
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 24 },
@@ -43,12 +40,7 @@ function DrawLines() {
 
 export default function DarkAbout() {
   return (
-    <section id="about" className="dot-grid relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24 overflow-hidden">
-      {/* Red Chrome Shader Background */}
-      <div className="absolute inset-0 opacity-35 pointer-events-none" style={{ zIndex: 0 }}>
-        <RedChromeShader />
-      </div>
-
+    <section id="about" className="dot-grid relative px-6 py-32 sm:px-10 lg:px-24 overflow-hidden">
       {/* glow blanco tenue esquina superior derecha */}
       <div
         aria-hidden

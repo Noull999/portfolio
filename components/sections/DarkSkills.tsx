@@ -1,10 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import dynamic from 'next/dynamic'
 import { SKILLS } from '@/lib/data'
-
-const RedChromeShader = dynamic(() => import('@/components/three/RedChromeShader'), { ssr: false })
 
 const LINE_WIDTHS = [55, 85, 38, 70]
 
@@ -34,12 +31,7 @@ function DrawLines() {
 
 export default function DarkSkills() {
   return (
-    <section id="skills" className="dot-grid relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24 overflow-hidden">
-      {/* Red Chrome Shader Background */}
-      <div className="absolute inset-0 opacity-35 pointer-events-none" style={{ zIndex: 0 }}>
-        <RedChromeShader />
-      </div>
-
+    <section id="skills" className="dot-grid relative px-6 py-32 sm:px-10 lg:px-24 overflow-hidden">
       {/* glow rojo tenue esquina inferior derecha */}
       <div
         aria-hidden

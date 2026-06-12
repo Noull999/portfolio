@@ -1,23 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import dynamic from 'next/dynamic'
 import { ArrowUpRight, GitHub, LinkedIn, Mail } from '@/components/ui/icons'
 import { SOCIAL } from '@/lib/data'
-
-const RedChromeShader = dynamic(() => import('@/components/three/RedChromeShader'), { ssr: false })
 
 export default function DarkContact() {
   return (
     <section
       id="contact"
-      className="dot-grid relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[var(--bg)] px-6 py-32 text-center"
+      className="dot-grid relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-32 text-center"
     >
-      {/* Red Chrome Shader Background */}
-      <div className="absolute inset-0 opacity-35 pointer-events-none" style={{ zIndex: 0 }}>
-        <RedChromeShader />
-      </div>
-
       {/* glow rojo tenue de fondo */}
       <div
         aria-hidden

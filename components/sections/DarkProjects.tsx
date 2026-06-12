@@ -1,11 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import dynamic from 'next/dynamic'
 import { PROJECTS } from '@/lib/data'
 import { ArrowUpRight, GitHub } from '@/components/ui/icons'
-
-const RedChromeShader = dynamic(() => import('@/components/three/RedChromeShader'), { ssr: false })
 
 function ProjectCard({ project, i }: { project: typeof PROJECTS[number]; i: number }) {
   return (
@@ -87,12 +84,7 @@ function ProjectCard({ project, i }: { project: typeof PROJECTS[number]; i: numb
 
 export default function DarkProjects() {
   return (
-    <section id="projects" className="relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24 overflow-hidden">
-      {/* Red Chrome Shader Background */}
-      <div className="absolute inset-0 opacity-35 pointer-events-none" style={{ zIndex: 0 }}>
-        <RedChromeShader />
-      </div>
-
+    <section id="projects" className="relative px-6 py-32 sm:px-10 lg:px-24 overflow-hidden">
       {/* glow rojo izquierda */}
       <div
         aria-hidden
