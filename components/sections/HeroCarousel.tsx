@@ -117,33 +117,44 @@ export default function HeroCarousel() {
       {/* Bottom-left: label + desc + nav */}
       <div
         className="absolute bottom-6 left-4 sm:bottom-20 sm:left-24"
-        style={{ zIndex: 60, maxWidth: 340, textShadow: '0 2px 14px rgba(0,0,0,0.85)' }}
+        style={{ zIndex: 60, maxWidth: 380, textShadow: '0 2px 14px rgba(0,0,0,0.85)' }}
       >
+        {/* Disponibilidad */}
+        <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.22em] text-[var(--accent)]">
+          ● Disponible · Puerto Montt, Chile
+        </p>
         <p
           className="mb-2 text-base font-bold uppercase tracking-widest text-white/95 sm:mb-3 sm:text-[22px]"
           style={{ letterSpacing: '0.02em' }}
         >
-          Esculturas · Código
+          Full-Stack Developer
         </p>
-        <p className="mb-4 hidden text-xs leading-relaxed text-white/90 sm:mb-5 sm:block sm:text-sm">
-          Desarrollador Full-Stack y automatizador industrial. Construyo experiencias digitales
-          con la misma precisión con la que se talla una pieza. Desde Puerto Montt, Chile.
+        <p className="mb-5 hidden text-xs leading-relaxed text-white/75 sm:block sm:text-sm">
+          Construyo software robusto y automatizo procesos industriales. Del backend a la planta,
+          con la misma obsesión por el detalle.
         </p>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap items-center gap-3">
           <button
             onClick={() => navigate('prev')}
             aria-label="Anterior"
-            className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white/80 text-white transition-all duration-150 hover:scale-105 hover:bg-white/10 sm:h-16 sm:w-16"
+            className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white/80 text-white transition-all duration-150 hover:scale-105 hover:bg-white/10 sm:h-14 sm:w-14"
           >
-            <ArrowLeft width={26} height={26} />
+            <ArrowLeft width={22} height={22} />
           </button>
           <button
             onClick={() => navigate('next')}
             aria-label="Siguiente"
-            className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white/80 text-white transition-all duration-150 hover:scale-105 hover:bg-white/10 sm:h-16 sm:w-16"
+            className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-white/80 text-white transition-all duration-150 hover:scale-105 hover:bg-white/10 sm:h-14 sm:w-14"
           >
-            <ArrowRight width={26} height={26} />
+            <ArrowRight width={22} height={22} />
           </button>
+          <a
+            href="/cv.pdf"
+            download
+            className="hidden sm:inline-flex items-center gap-2 rounded-full border border-[var(--accent)] px-5 py-2.5 font-mono text-[11px] uppercase tracking-wider text-[var(--accent)] transition-all duration-150 hover:bg-[var(--accent)] hover:text-white"
+          >
+            ↓ Descargar CV
+          </a>
         </div>
       </div>
 

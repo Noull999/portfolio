@@ -60,18 +60,32 @@ export default function DarkContact() {
         Disponible para proyectos freelance y colaboraciones. Escríbeme y te respondo pronto.
       </motion.p>
 
-      <motion.a
-        href={`mailto:${SOCIAL.email}`}
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.3 }}
-        className="relative mt-10 inline-flex items-center gap-2 rounded-full border-2 px-7 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:scale-105 hover:border-[var(--accent)] hover:text-[var(--accent)]"
-        style={{ borderColor: 'rgba(255,255,255,0.8)' }}
+        className="relative mt-10 flex flex-col items-center gap-4 sm:flex-row"
       >
-        {SOCIAL.email}
-        <ArrowUpRight width={18} height={18} />
-      </motion.a>
+        <a
+          href={`mailto:${SOCIAL.email}`}
+          className="inline-flex items-center gap-2 rounded-full border-2 px-7 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:scale-105 hover:border-[var(--accent)] hover:text-[var(--accent)]"
+          style={{ borderColor: 'rgba(255,255,255,0.8)' }}
+        >
+          {SOCIAL.email}
+          <ArrowUpRight width={18} height={18} />
+        </a>
+        <a
+          href="/cv.pdf"
+          download
+          className="inline-flex items-center gap-2 rounded-full border-2 px-7 py-3 text-sm font-semibold uppercase tracking-wider transition-all duration-200 hover:scale-105"
+          style={{ borderColor: 'var(--accent)', color: 'var(--accent)' }}
+          onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'var(--accent)'; (e.currentTarget as HTMLAnchorElement).style.color = '#fff' }}
+          onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'transparent'; (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent)' }}
+        >
+          ↓ Descargar CV
+        </a>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}

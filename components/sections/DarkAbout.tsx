@@ -80,9 +80,9 @@ export default function DarkAbout() {
           {...fade(0.2)}
           className="mt-10 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg"
         >
-          Analista Programador titulado, desarrollador Full-Stack y automatizador industrial.
-          Del backend a la planta — diseño, construyo y despliego con la misma obsesión por el
-          detalle. Cada proyecto es una pieza tallada, no una plantilla. Desde Puerto Montt, Chile.
+          Analista Programador titulado. Desarrollo Full-Stack de día, automatización industrial
+          cuando el software toca hierro. Del backend al PLC — diseño, construyo y despliego con
+          la misma obsesión por el detalle. Desde Puerto Montt, Chile.
         </motion.p>
 
         <motion.div {...fade(0.3)} className="mt-12 flex flex-wrap gap-3">
@@ -95,6 +95,30 @@ export default function DarkAbout() {
               {r}
             </span>
           ))}
+        </motion.div>
+
+        {/* Diferenciador industrial */}
+        <motion.div
+          {...fade(0.4)}
+          className="mt-10 flex items-start gap-4 rounded-xl border p-5"
+          style={{ borderColor: 'rgba(255,23,68,0.18)', background: 'rgba(255,23,68,0.04)' }}
+        >
+          <span
+            className="mt-0.5 shrink-0 text-[var(--accent)]"
+            style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: '1.6rem', lineHeight: 1 }}
+          >
+            ⚙
+          </span>
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-[var(--accent)]">
+              Perfil diferenciador
+            </p>
+            <p className="mt-1.5 text-sm leading-relaxed text-white/65">
+              Uno de los pocos desarrolladores que también programa PLCs Siemens S7 y diseña
+              lógica de control industrial (TIA Portal, SCADA, HMI). Ideal para proyectos donde
+              el software necesita hablar con maquinaria real.
+            </p>
+          </div>
         </motion.div>
 
         <DrawLines />
