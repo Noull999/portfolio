@@ -42,7 +42,7 @@ function DrawLines() {
 export default function DarkAbout() {
   return (
     <section id="about" className="relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
-      <VideoBackground triggerSelector="#about" />
+      <VideoBackground />
       {/* glow blanco tenue esquina superior derecha */}
       <div
         aria-hidden
@@ -56,7 +56,7 @@ export default function DarkAbout() {
       >
         001
       </span>
-      <div className="mx-auto max-w-6xl">
+      <div className="relative mx-auto max-w-6xl" style={{ zIndex: 1 }}>
         <motion.p
           {...fade(0)}
           className="mb-8 font-mono text-xs uppercase tracking-[0.2em] text-[var(--accent)]"

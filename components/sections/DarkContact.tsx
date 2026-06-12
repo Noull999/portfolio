@@ -11,7 +11,7 @@ export default function DarkContact() {
       id="contact"
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[var(--bg)] px-6 py-32 text-center"
     >
-      <VideoBackground triggerSelector="#contact" />
+      <VideoBackground />
       {/* glow rojo tenue de fondo */}
       <div
         aria-hidden

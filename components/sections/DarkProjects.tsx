@@ -86,7 +86,7 @@ function ProjectCard({ project, i }: { project: typeof PROJECTS[number]; i: numb
 export default function DarkProjects() {
   return (
     <section id="projects" className="relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
-      <VideoBackground triggerSelector="#projects" />
+      <VideoBackground />
       {/* glow rojo izquierda */}
       <div
         aria-hidden
@@ -101,7 +101,7 @@ export default function DarkProjects() {
         002
       </span>
 
-      <div className="mx-auto max-w-6xl">
+      <div className="relative mx-auto max-w-6xl" style={{ zIndex: 1 }}>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}

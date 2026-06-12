@@ -33,7 +33,7 @@ function DrawLines() {
 export default function DarkSkills() {
   return (
     <section id="skills" className="relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
-      <VideoBackground triggerSelector="#skills" />
+      <VideoBackground />
       {/* glow rojo tenue esquina inferior derecha */}
       <div
         aria-hidden
@@ -47,7 +47,7 @@ export default function DarkSkills() {
       >
         003
       </span>
-      <div className="mx-auto max-w-6xl">
+      <div className="relative mx-auto max-w-6xl" style={{ zIndex: 1 }}>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
