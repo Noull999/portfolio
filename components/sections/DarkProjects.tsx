@@ -1,8 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useRef, useEffect, useState } from 'react'
 import { PROJECTS } from '@/lib/data'
 import { ArrowUpRight, GitHub } from '@/components/ui/icons'
+import LiquidChromeShader from '@/components/three/LiquidChromeShader'
 
 function ProjectCard({ project, i }: { project: typeof PROJECTS[number]; i: number }) {
   return (
@@ -83,23 +85,33 @@ function ProjectCard({ project, i }: { project: typeof PROJECTS[number]; i: numb
 }
 
 export default function DarkProjects() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const [isVisible, setIsVisible] = useState(true)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const ob = new IntersectionObserver(([e]) => setIsVisible(e.isIntersecting), { threshold: 0 })
+    ob.observe(el)
+    return () => ob.disconnect()
+  }, [])
+
   return (
-    <section id="projects" className="relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
-      {/* glow rojo izquierda */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(ellipse 55% 40% at 0% 30%, rgba(255,23,68,0.06), transparent 60%)' }}
-      />
+    <section id="projects" className="relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24" ref={sectionRef}>
+      {/* Liquid Chrome shader background */}
+      <div className="pointer-events-none absolute inset-0 opacity-40" style={{ zIndex: 1 }}>
+        {isVisible && <LiquidChromeShader />}
+      </div>
+
       <span
         aria-hidden
         className="pointer-events-none absolute right-8 top-8 select-none leading-none text-white opacity-[0.022]"
-        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)' }}
+        style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(6rem,18vw,16rem)', zIndex: 2 }}
       >
         002
       </span>
 
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-6xl relative" style={{ zIndex: 3 }}>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
