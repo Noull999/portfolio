@@ -13,6 +13,11 @@
   --border: rgba(255, 255, 255, 0.08);
 }
 
+::selection {
+  background: rgba(255, 23, 68, 0.35);
+  color: #ffffff;
+}
+
 html {
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.18) var(--bg);
