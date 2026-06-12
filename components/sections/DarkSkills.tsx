@@ -3,6 +3,32 @@
 import { motion } from 'framer-motion'
 import { SKILLS } from '@/lib/data'
 
+const LINE_WIDTHS = [55, 85, 38, 70]
+
+function DrawLines() {
+  return (
+    <div className="mb-14 space-y-[10px]" aria-hidden>
+      {LINE_WIDTHS.map((w, i) => (
+        <motion.div
+          key={i}
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 1, delay: i * 0.14, ease: [0.16, 1, 0.3, 1] }}
+          style={{
+            transformOrigin: 'left',
+            width: `${w}%`,
+            height: '1px',
+            background: i === 2
+              ? 'linear-gradient(to right, rgba(255,23,68,0.45), transparent)'
+              : 'linear-gradient(to right, rgba(255,255,255,0.08), transparent)',
+          }}
+        />
+      ))}
+    </div>
+  )
+}
+
 export default function DarkSkills() {
   return (
     <section id="skills" className="dot-grid relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
@@ -28,7 +54,7 @@ export default function DarkSkills() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="chrome-text mb-16 uppercase"
+          className="chrome-text mb-12 uppercase"
           style={{
             fontFamily: 'var(--font-anton), sans-serif',
             fontSize: 'clamp(2.6rem, 7vw, 6rem)',
@@ -38,6 +64,8 @@ export default function DarkSkills() {
         >
           Habilidades
         </motion.h2>
+
+        <DrawLines />
 
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {SKILLS.map((group, i) => (

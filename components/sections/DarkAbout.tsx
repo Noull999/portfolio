@@ -11,11 +11,32 @@ const fade = (delay = 0) => ({
 
 const ROLES = ['Full-Stack', 'Automatización Industrial', 'Soporte IT']
 
-const STATS = [
-  { value: '9+', label: 'Proyectos construidos' },
-  { value: '3', label: 'Años de experiencia' },
-  { value: '2', label: 'Industrias: software e industrial' },
-]
+// Líneas decorativas que se dibujan al entrar en viewport
+const LINE_WIDTHS = [72, 44, 88, 28]
+
+function DrawLines() {
+  return (
+    <div className="mt-16 space-y-[10px]" aria-hidden>
+      {LINE_WIDTHS.map((w, i) => (
+        <motion.div
+          key={i}
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true, amount: 0.6 }}
+          transition={{ duration: 1, delay: i * 0.14, ease: [0.16, 1, 0.3, 1] }}
+          style={{
+            transformOrigin: 'left',
+            width: `${w}%`,
+            height: '1px',
+            background: i === 0
+              ? 'linear-gradient(to right, rgba(255,23,68,0.55), transparent)'
+              : 'linear-gradient(to right, rgba(255,255,255,0.09), transparent)',
+          }}
+        />
+      ))}
+    </div>
+  )
+}
 
 export default function DarkAbout() {
   return (
@@ -69,26 +90,7 @@ export default function DarkAbout() {
           ))}
         </motion.div>
 
-        {/* Stats row */}
-        <motion.div
-          {...fade(0.4)}
-          className="mt-16 grid grid-cols-3 gap-px overflow-hidden rounded-xl border"
-          style={{ borderColor: 'var(--border)', background: 'var(--border)' }}
-        >
-          {STATS.map((s) => (
-            <div key={s.value} className="flex flex-col px-6 py-6" style={{ background: 'var(--bg)' }}>
-              <span
-                className="chrome-text leading-none"
-                style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
-              >
-                {s.value}
-              </span>
-              <span className="mt-2 font-mono text-[10px] uppercase tracking-wider text-white/40">
-                {s.label}
-              </span>
-            </div>
-          ))}
-        </motion.div>
+        <DrawLines />
       </div>
     </section>
   )
