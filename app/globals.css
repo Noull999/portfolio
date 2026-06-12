@@ -71,6 +71,12 @@ body {
   background-size: 200px 200px;
 }
 
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
 /* Dot-grid de fondo: CSS puro, cero costo GPU */
 .dot-grid {
   background-image: radial-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px);

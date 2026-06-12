@@ -11,6 +11,12 @@ const fade = (delay = 0) => ({
 
 const ROLES = ['Full-Stack', 'Automatización Industrial', 'Soporte IT']
 
+const STATS = [
+  { value: '9+', label: 'Proyectos construidos' },
+  { value: '3', label: 'Años de experiencia' },
+  { value: '2', label: 'Industrias: software e industrial' },
+]
+
 export default function DarkAbout() {
   return (
     <section id="about" className="dot-grid relative bg-[var(--bg)] px-6 py-32 sm:px-10 lg:px-24">
@@ -60,6 +66,27 @@ export default function DarkAbout() {
             >
               {r}
             </span>
+          ))}
+        </motion.div>
+
+        {/* Stats row */}
+        <motion.div
+          {...fade(0.4)}
+          className="mt-16 grid grid-cols-3 gap-px overflow-hidden rounded-xl border"
+          style={{ borderColor: 'var(--border)', background: 'var(--border)' }}
+        >
+          {STATS.map((s) => (
+            <div key={s.value} className="flex flex-col px-6 py-6" style={{ background: 'var(--bg)' }}>
+              <span
+                className="chrome-text leading-none"
+                style={{ fontFamily: 'var(--font-anton), sans-serif', fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}
+              >
+                {s.value}
+              </span>
+              <span className="mt-2 font-mono text-[10px] uppercase tracking-wider text-white/40">
+                {s.label}
+              </span>
+            </div>
           ))}
         </motion.div>
       </div>
