@@ -34,9 +34,7 @@ export default function ScrollScrubVideo() {
       const p = getProgress()
       if (p !== null) {
         const target = p * duration
-        if (Math.abs(video.currentTime - target) > 0.02) {
-          video.currentTime = target
-        }
+        video.currentTime = target
       }
     }
 
