@@ -53,7 +53,7 @@ export default function Hero() {
       style={{ isolation: 'isolate', padding: '0 clamp(1.5rem, 4vw, 4rem)' }}
     >
       {/* ── Layer -1: video background con parallax */}
-      <VideoBackground intensity={0.22} />
+      <VideoBackground />
 
       {/* ── Layer 1: CSS grid lines */}
       <div
