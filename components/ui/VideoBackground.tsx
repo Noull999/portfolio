@@ -6,7 +6,7 @@ export default function VideoBackground() {
     >
       {/* Video — tinte rojo que combina con el acento del portfolio */}
       <video
-        src="/videos/bg-nature.mp4"
+        src="/videos/bg-smoke.mp4"
         autoPlay
         muted
         loop
