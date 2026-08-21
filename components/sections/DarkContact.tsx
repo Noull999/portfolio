@@ -70,6 +70,7 @@ export default function DarkContact() {
       >
         <a
           href={`mailto:${SOCIAL.email}`}
+          data-track="contacto-email"
           className="inline-flex items-center gap-2 rounded-full border-2 px-7 py-3 text-sm font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:scale-105 hover:border-[var(--accent)] hover:text-[var(--accent)]"
           style={{ borderColor: 'rgba(255,255,255,0.8)' }}
         >
@@ -79,6 +80,7 @@ export default function DarkContact() {
         <a
           href="/cv.pdf"
           download
+          data-track="descargar-cv"
           className="inline-flex items-center gap-2 rounded-full border-2 px-7 py-3 text-sm font-semibold uppercase tracking-wider transition-all duration-200 hover:scale-105"
           style={{ borderColor: 'var(--accent)', color: 'var(--accent)' }}
           onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = 'var(--accent)'; (e.currentTarget as HTMLAnchorElement).style.color = '#fff' }}
@@ -95,10 +97,10 @@ export default function DarkContact() {
         transition={{ duration: 0.7, delay: 0.4 }}
         className="relative mt-10 flex items-center gap-7"
       >
-        <a href={SOCIAL.github} target="_blank" rel="noopener noreferrer" className="text-white/60 transition-colors hover:text-white" aria-label="GitHub">
+        <a href={SOCIAL.github} target="_blank" rel="noopener noreferrer" data-track="social-github" className="text-white/60 transition-colors hover:text-white" aria-label="GitHub">
           <GitHub width={22} height={22} />
         </a>
-        <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" className="text-white/60 transition-colors hover:text-white" aria-label="LinkedIn">
+        <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" data-track="social-linkedin" className="text-white/60 transition-colors hover:text-white" aria-label="LinkedIn">
           <LinkedIn width={22} height={22} />
         </a>
         <a href={`mailto:${SOCIAL.email}`} className="text-white/60 transition-colors hover:text-white" aria-label="Email">
