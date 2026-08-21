@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Anton, Inter } from 'next/font/google'
 import './globals.css'
 import SmoothScroll from '@/effects/SmoothScroll'
@@ -39,6 +40,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Nav />
           {children}
         </SmoothScroll>
+        <Script
+          defer
+          src="https://admingloubal.vercel.app/track.js"
+          data-app="glb_d16fbdce719e"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
