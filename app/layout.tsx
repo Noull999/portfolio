@@ -20,14 +20,26 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://portfolio-v4-rho-opal.vercel.app'),
   title: 'José Asencio — Dev & Tech',
   description: 'Analista Programador Titulado · Técnico IT · Desarrollador Full-Stack. Disponible para proyectos freelance. Puerto Montt, Chile.',
-  keywords: ['desarrollador', 'freelance', 'full-stack', 'Python', 'React', 'Flask', 'Puerto Montt', 'Chile'],
+  keywords: ['desarrollador', 'freelance', 'full-stack', 'Python', 'React', 'Three.js', 'Puerto Montt', 'Chile'],
   authors: [{ name: 'José Asencio', url: 'mailto:joseestebanasencio@gmail.com' }],
   openGraph: {
     title: 'José Asencio — Dev & Tech',
-    description: 'Full-Stack Developer disponible para proyectos freelance.',
+    description: 'Analista Programador Titulado · Full-Stack Developer disponible para proyectos freelance. Puerto Montt, Chile.',
     type: 'website',
+    locale: 'es_CL',
+    siteName: 'José Asencio — Dev & Tech',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'José Asencio — Dev & Tech',
+    description: 'Analista Programador Titulado · Full-Stack Developer disponible para proyectos freelance.',
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 }
 
