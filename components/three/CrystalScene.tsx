@@ -107,8 +107,9 @@ export default function CrystalScene() {
 
   return (
     <>
-      {/* Environment map for reflections/refractions */}
-      <Environment preset="city" />
+      {/* Environment map for reflections/refractions — self-hosted, no
+          depende de raw.githack.com (puede devolver 403/estar caido) */}
+      <Environment files="/hdri/potsdamer_platz_1k.hdr" />
 
       {/* Dramatic lighting */}
       <ambientLight intensity={0.08} />

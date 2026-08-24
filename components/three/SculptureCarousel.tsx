@@ -130,7 +130,11 @@ export default function SculptureCarousel({ activeIndex }: { activeIndex: number
 
   return (
     <>
-      <Environment preset="night" />
+      {/* Self-hosted en vez de preset="night": el preset pide el .hdr en vivo
+          a raw.githack.com (CDN de terceros pensado para demos), que puede
+          devolver 403/estar caido sin aviso. Mismo archivo, servido desde
+          /public para no depender de nadie mas. */}
+      <Environment files="/hdri/dikhololo_night_1k.hdr" />
       <ambientLight intensity={0.18} />
       <pointLight position={[5, 5, 6]} intensity={45} color="#ffffff" distance={28} decay={2} />
       <pointLight position={[-5, -2, 3]} intensity={26} color="#ff1744" distance={22} decay={2} />
