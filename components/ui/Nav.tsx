@@ -3,12 +3,15 @@
 import { useEffect, useState } from 'react'
 
 const LINKS = [
+  { label: 'Inicio', href: '/' },
   { label: 'Proyectos', href: '#projects' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Soluciones', href: '/soluciones' },
   { label: 'Contacto', href: '#contact' },
 ]
 
 function go(e: React.MouseEvent, href: string) {
+  if (!href.startsWith('#')) return
   e.preventDefault()
   document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
 }

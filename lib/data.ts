@@ -78,6 +78,41 @@ export const SKILLS = [
   { group: 'IT & Infra', items: ['Linux', 'Git', 'Docker', 'Redes TCP/IP', 'Soporte Hardware'] },
 ]
 
+export const SOLUTIONS = [
+  {
+    id: 'reservas',
+    tag: 'Reservas online',
+    title: 'Sistema de Reservas Online',
+    pitch: 'Tus clientes reservan solos, vos ves todo en un panel.',
+    description:
+      'Cada negocio tiene su propia página pública, sus horarios y sus servicios. El cliente reserva sin llamarte ni escribirte, y vos administrás todo desde un panel — sin planillas, sin WhatsApp perdido entre mensajes.',
+    bullets: [
+      'Página pública propia por negocio (tu marca, tus servicios)',
+      'Calendario de horarios y disponibilidad en tiempo real',
+      'Panel de administración para ver y gestionar reservas',
+      'Adaptable a peluquerías, clínicas, talleres, estudios — cualquier rubro con turnos',
+    ],
+    demo: 'https://saas-agendamiento.vercel.app',
+    color: '#10b981',
+  },
+  {
+    id: 'facturacion',
+    tag: 'Facturación y clientes',
+    title: 'Sistema de Facturación y Clientes',
+    pitch: 'Facturás, cobrás y llevás el control — todo en un solo lugar.',
+    description:
+      'Reemplaza la planilla de Excel y los papeles sueltos: alta de clientes, emisión de facturas y seguimiento de pagos centralizado en un panel simple, pensado para pymes que necesitan orden sin complicarse con software contable pesado.',
+    bullets: [
+      'Alta y gestión de clientes en un solo lugar',
+      'Emisión de facturas con seguimiento de estado (pagada / pendiente)',
+      'Historial completo, sin depender de planillas sueltas',
+      'Pensado para pymes de servicios — se adapta a tu rubro',
+    ],
+    demo: 'https://proyecto-administrativo-iota.vercel.app',
+    color: '#f97316',
+  },
+]
+
 export const SOCIAL = {
   github: 'https://github.com/Noull999',
   linkedin: 'https://linkedin.com/in/jose-asencio-70804b269',
