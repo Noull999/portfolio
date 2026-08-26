@@ -62,13 +62,13 @@ function SolutionCard({ solution, i }: { solution: (typeof SOLUTIONS)[number]; i
       <div className="mt-7 flex items-center gap-4 border-t pt-5" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
         <a
           href={solution.demo}
-          target="_blank"
-          rel="noopener noreferrer"
+          target={solution.demoIsPublic ? '_blank' : undefined}
+          rel={solution.demoIsPublic ? 'noopener noreferrer' : undefined}
           data-track={`demo-${solution.id}`}
           className="inline-flex items-center gap-2 rounded-full border-2 px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-white transition-all duration-200 hover:scale-105"
           style={{ borderColor: solution.color }}
         >
-          Ver demo en vivo
+          {solution.demoIsPublic ? 'Ver demo en vivo' : 'Pedime una demo'}
           <ArrowUpRight width={14} height={14} />
         </a>
       </div>

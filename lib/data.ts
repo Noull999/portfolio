@@ -93,6 +93,7 @@ export const SOLUTIONS = [
       'Adaptable a peluquerías, clínicas, talleres, estudios — cualquier rubro con turnos',
     ],
     demo: 'https://saas-agendamiento.vercel.app',
+    demoIsPublic: true,
     color: '#10b981',
   },
   {
@@ -108,7 +109,11 @@ export const SOLUTIONS = [
       'Historial completo, sin depender de planillas sueltas',
       'Pensado para pymes de servicios — se adapta a tu rubro',
     ],
-    demo: 'https://proyecto-administrativo-iota.vercel.app',
+    // Es el sistema real de un cliente real (Servicios Asencio) en produccion:
+    // no tiene landing publica, cae directo al login. No se linkea para que
+    // nadie pruebe entrar ahi ni vea eso como un "demo roto".
+    demo: `mailto:${'joseestebanasencio@gmail.com'}?subject=Quiero%20ver%20una%20demo%20del%20sistema%20de%20facturacion`,
+    demoIsPublic: false,
     color: '#f97316',
   },
 ]
