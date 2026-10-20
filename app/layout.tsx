@@ -57,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </SmoothScroll>
         <Script
           defer
-          src="https://admingloubal.vercel.app/track.js"
+          src="https://admingloubal.vercel.app/s.js"
           data-app="glb_d16fbdce719e"
           strategy="afterInteractive"
         />
