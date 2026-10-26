@@ -39,6 +39,28 @@ export default function Projects() {
         <div className="projects">
           {PROJECTS.map((p) => {
             const external = p.link.href.startsWith('http')
+            if (p.wide) {
+              return (
+                <article key={p.title} className="project wide glass reveal">
+                  <div className="wide-text">
+                    <span className="tag">{p.tag}</span>
+                    <h3>{p.title}</h3>
+                    <p>{p.description}</p>
+                    {p.bullets && <ul className="bullets">{p.bullets.map((b) => <li key={b}>{b}</li>)}</ul>}
+                    <div className="project-foot">
+                      <div className="chips">{p.chips.map((c) => <span key={c}>{c}</span>)}</div>
+                      <div className="links">
+                        {p.secondaryLink && (
+                          <a className="link muted" href={p.secondaryLink.href} target="_blank" rel="noopener noreferrer">{p.secondaryLink.label}</a>
+                        )}
+                        <a className="link" href={p.link.href} target="_blank" rel="noopener noreferrer">{p.link.label} →</a>
+                      </div>
+                    </div>
+                  </div>
+                  <Media media={p.media} big />
+                </article>
+              )
+            }
             return (
               <article key={p.title} className={`project glass reveal${p.big ? ' big' : ''}`}>
                 {!p.big && <Media media={p.media} />}

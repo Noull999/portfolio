@@ -40,11 +40,15 @@ type Media =
 
 export type Project = {
   big?: boolean
+  /** Tarjeta destacada a todo el ancho: texto a la izquierda y captura a la derecha */
+  wide?: boolean
   tag: string
   title: string
   description: string
+  bullets?: string[]
   chips: string[]
   link: { href: string; label: string }
+  secondaryLink?: { href: string; label: string }
   media: Media
 }
 
@@ -91,6 +95,21 @@ export const PROJECTS: Project[] = [
     chips: ['Next.js', 'PostgreSQL'],
     link: { href: 'https://admingloubal.vercel.app', label: 'Probar demo' },
     media: { kind: 'shot', src: '/img/gloubal.webp', alt: 'Métricas de visitas en Gloubal Panel', width: 1200, height: 525 },
+  },
+  {
+    wide: true,
+    tag: 'App de escritorio · Automatización',
+    title: 'Music Downloader',
+    description: 'Descarga tu música de SoundCloud de forma rápida y automática: sincroniza tus likes y deja cada tema en tu biblioteca, ordenado y listo para mezclar.',
+    bullets: [
+      'Sincroniza tus likes con un clic o de forma programada',
+      'No vuelve a bajar lo que ya tienes: detecta duplicados por huella de audio',
+      'Ordena por género y agrega BPM y tonalidad que leen Serato y Rekordbox',
+    ],
+    chips: ['Python', 'yt-dlp', 'Windows · macOS'],
+    link: { href: 'https://noull999.github.io/music-downloader/', label: 'Ver proyecto' },
+    secondaryLink: { href: 'https://github.com/Noull999/music-downloader', label: 'Código en GitHub' },
+    media: { kind: 'shot', src: '/img/music-downloader.webp', alt: 'Cola de descargas de Music Downloader', width: 1200, height: 743 },
   },
 ]
 
