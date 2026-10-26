@@ -1,13 +1,17 @@
 :root {
   --bg: #070405;
   --text: #fff3f2;
-  --muted: rgba(255, 232, 230, .62);
-  --faint: rgba(255, 232, 230, .38);
+  --muted: rgba(255, 232, 230, .72);
+  --faint: rgba(255, 232, 230, .5);
   --accent: #ff2d3d;
   --accent-soft: #ff8a8f;
   --line: rgba(255, 255, 255, .10);
   --mono: var(--font-geist-mono), ui-monospace, monospace;
   --sans: var(--font-geist), system-ui, sans-serif;
+  /* El haz cae por el centro de la tarjeta "Ahora construyendo":
+     borde derecho de la grilla (máx 1180px, padding 24px) menos media tarjeta (200px).
+     Se resuelve contra elementos de ancho completo (hero y el hilo de luz de abajo). */
+  --beam-x: calc(50% + min(590px, 50% - 24px) - 200px);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { background: var(--bg); color: var(--text); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
@@ -79,9 +83,7 @@ section[id] { scroll-margin-top: 90px; }
 }
 
 /* Haz de luz */
-/* El haz cae por el centro de la tarjeta "Ahora construyendo":
-   borde derecho de la grilla (máx 1180px, padding 24px) menos media tarjeta (200px) */
-.beam { position: absolute; inset: 0; pointer-events: none; --beam-x: calc(50% + min(590px, 50% - 24px) - 200px); }
+.beam { position: absolute; inset: 0; pointer-events: none; }
 .beam-core {
   position: absolute; top: 0; bottom: 0; left: var(--beam-x); width: 420px; transform: translateX(-50%);
   background: linear-gradient(90deg,
@@ -99,6 +101,13 @@ section[id] { scroll-margin-top: 90px; }
   mix-blend-mode: screen; opacity: .7;
   mask-image: linear-gradient(to bottom, transparent 5%, #000 40%);
   -webkit-mask-image: linear-gradient(to bottom, transparent 5%, #000 40%);
+}
+.ascii-floor {
+  position: absolute; bottom: 0; left: var(--beam-x); transform: translateX(-50%);
+  width: 760px; height: 50%;
+  mix-blend-mode: screen;
+  mask-image: linear-gradient(to bottom, transparent, #000 45%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 45%);
 }
 .beam-floor {
   position: absolute; left: 0; right: 0; bottom: -10%; height: 55%;
@@ -179,7 +188,7 @@ h1 .accent {
 .work .dot { width: 8px; height: 8px; border-radius: 50%; }
 .work b { display: block; font-weight: 500; font-size: 15px; }
 .work small { display: block; margin-top: 3px; color: var(--muted); font-size: 13px; }
-.work em { font-style: normal; font-family: var(--mono); font-size: 10.5px; color: var(--faint); letter-spacing: .06em; }
+.work em { font-style: normal; font-family: var(--mono); font-size: 11px; color: var(--faint); letter-spacing: .06em; }
 .card-foot {
   margin-top: 16px; padding-top: 18px; border-top: 1px solid var(--line);
   display: flex; align-items: center; justify-content: space-between; gap: 12px;
@@ -201,6 +210,39 @@ h1 .accent {
 /* Entrada */
 .in { opacity: 0; transform: translateY(14px); animation: in .9s cubic-bezier(.2,.7,.2,1) forwards; }
 @keyframes in { to { opacity: 1; transform: none; } }
+
+/* ---------- Debajo del hero: la luz sigue bajando ---------- */
+.below { position: relative; }
+/* Hilo de luz a la misma altura que el haz; los vidrios de las tarjetas lo difuminan al pasar */
+.below::before {
+  content: ''; position: absolute; top: 0; bottom: 0; left: var(--beam-x); width: 1px; translate: -50% 0;
+  background: linear-gradient(to bottom, rgba(255,200,200,.8), rgba(255,45,61,.45) 25%, rgba(255,45,61,.25) 85%, transparent);
+  box-shadow: 0 0 14px 2px rgba(255,45,61,.3);
+  pointer-events: none;
+}
+/* Pulso que viaja hacia abajo por el hilo */
+.below::after {
+  content: ''; position: absolute; top: 0; bottom: 0; left: var(--beam-x); width: 3px; translate: -50% 0;
+  background: linear-gradient(to bottom, transparent, rgba(255,220,220,.95), transparent) no-repeat;
+  background-size: 100% 180px;
+  filter: blur(.5px);
+  animation: pulse-down 9s linear infinite;
+  pointer-events: none;
+}
+@keyframes pulse-down { from { background-position: 0 -180px; } to { background-position: 0 100%; } }
+/* Franja de caracteres que el hilo "ilumina": textura para que el vidrio tenga algo que refractar */
+.code-field {
+  position: absolute; inset: 0; pointer-events: none; opacity: .32;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='168' height='88'><g font-family='monospace' font-size='11' fill='%23ff2d3d' xml:space='preserve'><text x='0' y='11'> %2A%2B%2B%2B. . %2B.  %2B  ..    %2B </text><text x='0' y='22'>  .       . %2B:  .:::  %2B </text><text x='0' y='33'> %2A   .   %2A%2B  :      :.  </text><text x='0' y='44'> :    :   .. %2B::  .    %2A</text><text x='0' y='55'>   %2A . %2B.    . :   :   .</text><text x='0' y='66'>     %2B    %2A  :  %2B  .   %2B</text><text x='0' y='77'>     %2B      .     %2A   : </text><text x='0' y='88'>  %2A       .%2B  %2B    .  %2A </text></g></svg>");
+  mask-image:
+    linear-gradient(90deg, transparent calc(var(--beam-x) - 380px), #000 var(--beam-x), transparent calc(var(--beam-x) + 380px)),
+    linear-gradient(to bottom, #000, rgba(0,0,0,.35) 60%, #000);
+  mask-composite: intersect;
+  -webkit-mask-image:
+    linear-gradient(90deg, transparent calc(var(--beam-x) - 380px), #000 var(--beam-x), transparent calc(var(--beam-x) + 380px)),
+    linear-gradient(to bottom, #000, rgba(0,0,0,.35) 60%, #000);
+  -webkit-mask-composite: source-in;
+}
 
 /* ---------- Secciones ---------- */
 .section { position: relative; padding: 140px 24px 0; overflow-x: clip; }
@@ -226,12 +268,12 @@ h2 .accent { color: var(--accent-soft); }
 }
 .project.big { grid-column: span 3; }
 .project:hover { transform: translateY(-4px); border-color: rgba(255,45,61,.35); box-shadow: inset 0 1px 0 rgba(255,255,255,.28), 0 20px 60px rgba(255,45,61,.12); }
-.project .tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-soft); }
+.project .tag { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--accent-soft); }
 .project h3 { margin-top: 12px; font-size: 22px; font-weight: 500; letter-spacing: -.02em; }
 .project p { margin-top: 10px; color: var(--muted); font-size: 15px; line-height: 1.55; }
 .project-foot { margin-top: auto; padding-top: 22px; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chips span { font-family: var(--mono); font-size: 10.5px; color: var(--faint); padding: 4px 8px; border-radius: 6px; border: 1px solid var(--line); }
+.chips span { font-family: var(--mono); font-size: 11px; color: var(--faint); padding: 4px 8px; border-radius: 6px; border: 1px solid var(--line); }
 .link { font-size: 14px; font-weight: 500; white-space: nowrap; }
 .link:hover { color: var(--accent-soft); }
 .link.off { color: var(--faint); font-weight: 400; }
@@ -280,6 +322,10 @@ h2 .accent { color: var(--accent-soft); }
   background: #120a0b; border: 1px solid var(--line);
 }
 .avatar img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+/* Retrato ASCII encima de la foto: se desvanece cuando aparece la foto real */
+.avatar .ascii { position: absolute; inset: 0; width: 100%; height: 100%; transition: opacity .8s ease; }
+.avatar.photo .ascii { opacity: 0; }
+.avatar { cursor: crosshair; }
 /* Funde la foto con la paleta: oscurece abajo y deja un reflejo rojo */
 .avatar::after {
   content: ''; position: absolute; inset: 0;
@@ -287,11 +333,11 @@ h2 .accent { color: var(--accent-soft); }
     linear-gradient(to top, rgba(7,4,5,.85), transparent 45%),
     radial-gradient(ellipse 80% 50% at 50% 115%, rgba(255,45,61,.45), transparent 70%);
 }
-.avatar small { position: absolute; z-index: 1; left: 14px; bottom: 12px; font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.avatar small { position: absolute; z-index: 1; left: 14px; bottom: 12px; font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 .facts { margin-top: 18px; font-family: var(--mono); font-size: 12px; }
 .facts div { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--line); }
 .facts div:last-child { border-bottom: 0; }
-.facts span { color: var(--faint); text-transform: uppercase; letter-spacing: .08em; font-size: 10.5px; }
+.facts span { color: var(--faint); text-transform: uppercase; letter-spacing: .08em; font-size: 11px; }
 .about p.body { margin-top: 18px; color: var(--muted); font-size: 17px; line-height: 1.65; font-weight: 300; max-width: 600px; }
 .about p.body strong { color: var(--text); font-weight: 500; }
 .roles { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -310,7 +356,7 @@ h2 .accent { color: var(--accent-soft); }
 .direct a:hover { border-color: rgba(255,45,61,.4); background: rgba(255,45,61,.06); }
 .direct a span { font-family: var(--mono); font-size: 11px; color: var(--faint); letter-spacing: .06em; }
 form { display: grid; gap: 12px; align-content: start; }
-form label { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
+form label { font-family: var(--mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--faint); }
 .field { display: grid; gap: 8px; }
 input, textarea, select {
   width: 100%; font: inherit; font-size: 15px; color: var(--text);
@@ -352,13 +398,28 @@ footer {
   .services { grid-template-columns: repeat(2, 1fr); margin-top: 40px; }
   .meta { display: none; }
   .hero { padding-top: 120px; }
-  .beam { --beam-x: 50%; }
+  :root { --beam-x: 50%; }
   .beam-core { width: 300px; }
 }
 @media (max-width: 520px) {
   .hero { padding: 108px 16px 32px; }
-  .beam { --beam-x: 80%; }
-  .ctas .btn { flex: 1 1 100%; justify-content: center; }
+  :root { --beam-x: 88%; }
+  /* En celular el texto usa todo el ancho: la luz aparece recién a la altura
+     de los botones y cae con fuerza sobre la tarjeta "Ahora construyendo" */
+  .beam-core { width: 200px; }
+  .beam-pixels { width: 340px; }
+  .ascii-floor { width: 420px; }
+  .beam-core, .beam-pixels {
+    mask-image: linear-gradient(to bottom, transparent 0%, transparent 38%, #000 58%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, transparent 38%, #000 58%);
+  }
+  .lead { color: rgba(255, 232, 230, .82); }
+  .ctas .btn-primary { flex: 1 1 100%; justify-content: center; }
+  .hero .ctas .btn-ghost {
+    background: none; border: 0; box-shadow: none; backdrop-filter: none; -webkit-backdrop-filter: none;
+    padding: 6px 4px; margin: 0 auto; color: var(--muted);
+  }
+  .ctas .btn-ghost::after { display: none; }
   .services { grid-template-columns: 1fr 1fr; gap: 10px; }
   .svc { padding: 14px; }
   .svc span { display: none; }

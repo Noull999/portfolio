@@ -12,10 +12,14 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Projects />
-        <Process />
-        <About />
-        <Contact />
+        {/* La luz del hero sigue bajando como un hilo y enciende una franja de código */}
+        <div className="below">
+          <div className="code-field" aria-hidden="true" />
+          <Projects />
+          <Process />
+          <About />
+          <Contact />
+        </div>
       </main>
       <Footer />
     </>

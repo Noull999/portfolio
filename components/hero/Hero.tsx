@@ -2,6 +2,7 @@ import type { CSSProperties } from 'react'
 import { BUILDING, SERVICES, waLink } from '@/lib/site'
 import { WhatsAppIcon } from '@/components/icons'
 import BeamPixels from './BeamPixels'
+import AsciiFloor from './AsciiFloor'
 import Clock from './Clock'
 
 const delay = (s: number): CSSProperties => ({ animationDelay: `${s}s` })
@@ -19,6 +20,7 @@ export default function Hero() {
         <div className="beam-floor" />
         <div className="beam-core" />
         <BeamPixels />
+        <AsciiFloor />
         <div className="grain" />
       </div>
 
@@ -39,7 +41,7 @@ export default function Hero() {
               <WhatsAppIcon />
               Cotiza por WhatsApp
             </a>
-            <a className="btn glass" href="#proyectos">Ver proyectos <span aria-hidden="true">→</span></a>
+            <a className="btn btn-ghost glass" href="#proyectos">Ver proyectos <span aria-hidden="true">→</span></a>
           </div>
 
           <div className="trust in" style={delay(0.66)}>

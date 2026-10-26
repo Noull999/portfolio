@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import AsciiAvatar from './AsciiAvatar'
 
 const ROLES = ['Full-Stack', 'IA aplicada', 'Experiencias 3D', 'Soporte IT']
 const STACK = ['Python', 'FastAPI', 'Node.js', 'React', 'Next.js', 'TypeScript', 'PostgreSQL', 'MongoDB', 'Three.js', 'Docker', 'Claude API']
@@ -10,10 +10,7 @@ export default function About() {
         <div className="label reveal"><b>›</b> 03 / Sobre mí</div>
         <div className="about">
           <div className="profile glass lq reveal">
-            <div className="avatar">
-              <Image src="/jose.jpg" alt="José Asencio" fill sizes="(max-width: 960px) 420px, 330px" />
-              <small>José Asencio · Dev</small>
-            </div>
+            <AsciiAvatar />
             <div className="facts">
               <div><span>Ubicación</span>Puerto Montt, CL</div>
               <div><span>Título</span>Analista Programador</div>
