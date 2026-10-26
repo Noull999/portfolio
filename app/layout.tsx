@@ -1,41 +1,44 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
-import { Anton, Inter } from 'next/font/google'
+import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
-import SmoothScroll from '@/effects/SmoothScroll'
-import Nav from '@/components/ui/Nav'
-import Cursor from '@/components/cursor/Cursor'
+import Effects from '@/components/Effects'
+import LiquidFilter from '@/components/LiquidFilter'
+import { SITE_URL } from '@/lib/site'
 
-const anton = Anton({
-  weight: '400',
+const geist = Geist({
   subsets: ['latin'],
-  variable: '--font-anton',
+  variable: '--font-geist',
   display: 'swap',
 })
 
-const inter = Inter({
+const geistMono = Geist_Mono({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-geist-mono',
   display: 'swap',
 })
+
+const title = 'José Asencio — Apps y sistemas a medida para tu negocio'
+const description =
+  'Desarrollador full-stack en Puerto Montt, Chile. Sistemas de reservas, facturación, paneles de gestión y automatizaciones con IA para pymes y negocios locales.'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://portfolio-v4-rho-opal.vercel.app'),
-  title: 'José Asencio — Dev & Tech',
-  description: 'Analista Programador Titulado · Técnico IT · Desarrollador Full-Stack. Disponible para proyectos freelance. Puerto Montt, Chile.',
-  keywords: ['desarrollador', 'freelance', 'full-stack', 'Python', 'React', 'Three.js', 'Puerto Montt', 'Chile'],
-  authors: [{ name: 'José Asencio', url: 'mailto:joseestebanasencio@gmail.com' }],
+  metadataBase: new URL(SITE_URL),
+  title,
+  description,
+  keywords: ['desarrollador', 'freelance', 'full-stack', 'apps a medida', 'sistemas web', 'pymes', 'Puerto Montt', 'Chile'],
+  authors: [{ name: 'José Asencio' }],
   openGraph: {
-    title: 'José Asencio — Dev & Tech',
-    description: 'Analista Programador Titulado · Full-Stack Developer disponible para proyectos freelance. Puerto Montt, Chile.',
+    title,
+    description,
     type: 'website',
     locale: 'es_CL',
-    siteName: 'José Asencio — Dev & Tech',
+    siteName: 'José Asencio',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'José Asencio — Dev & Tech',
-    description: 'Analista Programador Titulado · Full-Stack Developer disponible para proyectos freelance.',
+    title,
+    description,
   },
   robots: {
     index: true,
@@ -46,15 +49,18 @@ export const metadata: Metadata = {
   },
 }
 
+export const viewport: Viewport = {
+  themeColor: '#070405',
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`h-full ${anton.variable} ${inter.variable}`}>
-      <body className="min-h-full overflow-x-hidden">
-        <Cursor />
-        <SmoothScroll>
-          <Nav />
-          {children}
-        </SmoothScroll>
+    <html lang="es" className={`${geist.variable} ${geistMono.variable}`}>
+      <body>
+        <LiquidFilter />
+        {children}
+        <Effects />
+        {/* Analytics propio (Gloubal Panel) */}
         <Script
           defer
           src="https://admingloubal.vercel.app/s.js"

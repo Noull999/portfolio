@@ -1,6 +1,6 @@
-# José Asencio — Dev & Tech
+# José Asencio — Apps y sistemas a medida
 
-Portfolio personal en 3D/WebGL. Analista Programador · Full-Stack, Puerto Montt, Chile.
+Portafolio para clientes: desarrollo full-stack de apps, sistemas de gestión y automatizaciones con IA. Puerto Montt, Chile.
 
 **Live:** [portfolio-v4-rho-opal.vercel.app](https://portfolio-v4-rho-opal.vercel.app)
 
@@ -8,28 +8,37 @@ Portfolio personal en 3D/WebGL. Analista Programador · Full-Stack, Puerto Montt
 
 ## Stack
 
-![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js) ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white) ![Three.js](https://img.shields.io/badge/Three.js-r184-000000?logo=three.js&logoColor=white) ![React Three Fiber](https://img.shields.io/badge/R3F-9-black) ![Tailwind](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white) ![GSAP](https://img.shields.io/badge/GSAP-3-88CE02?logo=greensock&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-16-black?logo=next.js) ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)
+
+Sin librerías de animación ni 3D: todo el diseño es CSS y un `<canvas>` liviano.
 
 ## Qué tiene
 
-- **Hero 3D interactivo**: carrusel de esculturas generadas con IA (modelos `.glb` optimizados) renderizado con React Three Fiber, con luces dinámicas, post-procesamiento (`@react-three/postprocessing`) y mapas de iluminación ambiental (HDRI) auto-hospedados.
-- **Cristal/refracción en tiempo real**: escena con `MeshTransmissionMaterial` de `drei` para efectos de vidrio/cromo.
-- **Scroll suave**: `lenis` + animaciones de scroll con GSAP (`@gsap/react`).
-- **Cursor custom** y micro-interacciones con `framer-motion`.
-- **Analytics propio**: tracking de pageviews/clicks/errores JS vía [Gloubal Panel](https://github.com/Noull999/admingloubal), un dashboard de analytics que construí y opero yo mismo.
-- **Open Graph dinámico**: la imagen de preview al compartir el link se genera en runtime con `next/og` (`app/opengraph-image.tsx`), no es un archivo estático.
+- **Haz de luz pixelado**: un canvas de 88 columnas escalado con `image-rendering: pixelated`, a ~30 fps y en pausa cuando sale de pantalla o el usuario prefiere menos movimiento.
+- **Liquid glass**: en Chromium, `backdrop-filter: url(#liquid)` con un filtro SVG de turbulencia + desplazamiento refracta la luz que pasa detrás de las tarjetas. En Safari/Firefox queda como vidrio esmerilado normal.
+- **Contacto sin servidor**: el formulario arma el mensaje y abre WhatsApp listo para enviar.
+- **Demos enlazadas**: cada proyecto lleva a su demo pública.
+- **Analytics propio** con [Gloubal Panel](https://github.com/Noull999/admingloubal).
+- **Open Graph dinámico** con `next/og` (`app/opengraph-image.tsx`).
 
 ## Estructura
 
 ```
-app/            layout, page, metadata, OG image
+app/            layout, page, estilos globales, imagen OG
 components/
-  hero/         escena 3D principal
-  three/        carrusel de esculturas, cristal, canvas compartido
-  projects/     sección de proyectos
-  sections/     resto de secciones de la página
-  cursor/       cursor custom
-  ui/           nav y componentes de interfaz
+  hero/         hero, haz de píxeles y reloj
+  sections/     proyectos, proceso, sobre mí y contacto
+lib/site.ts     contenido: contacto, proyectos, servicios, pasos
+public/img/     capturas de las apps (WebP)
+```
+
+Para cambiar textos, proyectos o el número de WhatsApp se edita `lib/site.ts`.
+
+## Desarrollo
+
+```bash
+npm install
+npm run dev
 ```
 
 ## Deploy

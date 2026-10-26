@@ -1,25 +1,23 @@
-import HeroCarousel from '@/components/sections/HeroCarousel'
-import DarkAbout from '@/components/sections/DarkAbout'
-import DarkProjects from '@/components/sections/DarkProjects'
-import DarkSkills from '@/components/sections/DarkSkills'
-import DarkContact from '@/components/sections/DarkContact'
-import Marquee from '@/components/ui/Marquee'
-import Footer from '@/components/ui/Footer'
-import ScrollScrubVideo from '@/components/ui/ScrollScrubVideo'
+import Nav from '@/components/Nav'
+import Hero from '@/components/hero/Hero'
+import Projects from '@/components/sections/Projects'
+import Process from '@/components/sections/Process'
+import About from '@/components/sections/About'
+import Contact from '@/components/sections/Contact'
+import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main>
-      <ScrollScrubVideo />
-      <HeroCarousel />
-      <Marquee />
-      <DarkAbout />
-      <Marquee />
-      <DarkProjects />
-      <Marquee />
-      <DarkSkills />
-      <DarkContact />
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <Projects />
+        <Process />
+        <About />
+        <Contact />
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }

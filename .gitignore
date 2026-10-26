@@ -33,11 +33,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Video files (large) — excluye assets web optimizados
-*.mp4
-!public/videos/*.mp4
-
-# Modelos 3D originales sin comprimir (el sitio usa /public/models/optimized/)
-/public/models/*.glb
-
-.vercel
+# Prototipo HTML del rediseño (referencia local)
+/prototipo/
